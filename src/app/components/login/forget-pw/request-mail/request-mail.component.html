@@ -1,0 +1,13 @@
+<div class="container">
+    <img src="assets/logo_light.png" alt="Logo" class="logo" />
+    <h2>¿Olvidaste tu contraseña?</h2>
+  
+      <form class="form" [formGroup]="changePassForm" (ngSubmit)="onSubmit()">
+  
+        <label for="correo">Correo Electronico</label>
+        <input type="email" name="userMail" placeholder="Ingrese su correo" formControlName="userMail"
+          required>
+  
+        <button type="submit" class="btn btn-primary">Solicitar cambiar contraseña</button>
+      </form>
+  </div>

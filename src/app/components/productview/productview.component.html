@@ -1,0 +1,47 @@
+<div class="background w-auto"  @sideState>
+  <div class="row m-0 p-5">
+
+    <!-- IMAGEN DEL PRODUCTO -->
+    <div class="col-4 d-flex align-items-center">
+      <div class="row">
+        <div class="d-flex justify-content-center">
+          <div class="circular-image">
+            <img [src]="producto.img_url| default:'https://i.pinimg.com/originals/ce/f2/49/cef2490a666301687d8722008451a57a.png'" alt="Nombre del Producto 1" class="img-fluid rounded">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD DETALLES DEL PRODUCTO -->
+    <div class="col-12 col-md-4 d-flex align-items-center justify-content-center">
+      <div class="text-left card product-detail-card">
+        <h1 class="header__title">{{ producto.nombre }}</h1>
+        <h5 class="hide-300">{{ producto.descripcion }}</h5>
+        <p>Precio: {{ producto.precio | currency:'USD':true:"1.0-0" }} CLP</p>
+        <div class="d-flex justify-content-center align-items-left">
+          <button class="btn btn-success btn-compra" (click)="addCarrito()">
+            <div class="hide-300">Agregar al Carrito</div>
+            <i class="fa fa-shopping-cart"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DETALLES TIENDA DEL PRODUCTO -->
+    <div class="col-4 d-flex align-items-center justify-content-center">
+      <section id="calificacion" class="text-center">
+        <h1 class="text-center titulo-tienda">{{ tienda.nombre }}</h1>
+        <h6>Descripción</h6>
+        <div class="calificacion-container">
+          <div class="col-4">
+            <div>{{ tienda.descripcion }}</div>
+          </div>
+        </div>
+        <button class="header__button" href="#" (click)="verTienda()">
+          Ver Tienda
+        </button>
+      </section>
+    </div>
+
+  </div>
+</div>

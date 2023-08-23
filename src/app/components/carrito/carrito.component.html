@@ -1,0 +1,39 @@
+<div class="titulo">
+  <h1>Carrito de Compras</h1>
+</div>
+
+<div class="container">
+  <table class="table table-hover rounded-top">
+    <thead>
+      <tr>
+        <th class="centrado" scope="col">Borrar</th>
+        <th class="izquierda hide-360" scope="col">Producto</th>
+        <th class="centrado" scope="col">Imagen</th>
+        <th class="centrado" scope="col">Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of detalle_productos; let i = index">
+        <td class="centrado">
+          <i class="fa fa-trash text-danger fw-bold clickeable" (click)="eliminarProducto(i)" aria-hidden="true"></i>
+        </td>
+        <td class="izquierda  hide-360">{{producto.nombre}}</td>
+        <td class="circular-image"><img [src]="producto.img_url | default:'https://i.pinimg.com/originals/ce/f2/49/cef2490a666301687d8722008451a57a.png'"></td>
+        <td class="centrado">{{producto.precio | currency:'USD':true:"1.0-0"}}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td class="derecha  hide-360" colspan="3"><strong>Total:</strong></td>
+        <td class="derecha  hide-over-360" colspan="2"><strong>Total:</strong></td>
+        <td class="centrado"><strong>{{calcularTotal() | currency:'USD':true:"1.0-0"}}</strong></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="text-end">
+    <button class="btn btn-dark" (click)="limpiarCarrito()">Limpiar Carrito</button>
+    &nbsp;
+    <button class="btn btn-primary" (click)="finalizarCompra()">Finalizar Compra</button>
+  </div>
+</div>

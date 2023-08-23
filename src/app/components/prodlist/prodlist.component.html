@@ -1,0 +1,16 @@
+<h2 class="titulo">Productos</h2>
+<div class="container">
+  <div class="productos-container">
+    <div class="producto" *ngFor="let producto of productos" @sideState
+      [ngStyle]="{'background-image': 'url(' + (producto.img_url ? producto.img_url : 'https://i.pinimg.com/originals/ce/f2/49/cef2490a666301687d8722008451a57a.png') + ')'}"
+      (click)="goToProductDetail(producto.id)">
+      <div class="producto-overlay">
+        <div class="inf-producto">
+          <h3>{{producto.nombre}}</h3>
+          <p>{{producto.precio | currency:'USD':true:"1.0-0"}} CLP</p>
+        </div>
+          
+      </div>
+    </div>
+  </div>
+</div>

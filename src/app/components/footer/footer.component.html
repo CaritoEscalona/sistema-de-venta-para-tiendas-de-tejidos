@@ -1,0 +1,31 @@
+<footer class="background-footer">
+  <hr class="text-light py-2" />
+  <div class="row m-0">
+    <div class="col-5">
+      <img src="../../../assets/logo_light.png" class="img-fluid tambaleo" alt="" />
+    </div>
+    <div class="col-7 col-md-2 d-flex justify-content-center flex-wrap fs-4">
+      <div class="icon me-3">
+        <i class="fa fa-facebook" aria-hidden="true"></i>
+      </div>
+      <div class="icon me-3">
+        <i class="fa fa-twitter" aria-hidden="true"></i>
+      </div>
+      <div class="icon">
+        <i class="fa fa-instagram" aria-hidden="true"></i>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2023 CCD, Universidad del Bío-Bío.</p>
+      </div>
+    </div>
+    <div class="hide-800 col-12 col-md-5 align-items-center justify-content-end pe-5">
+      <nav>
+        <ul>
+          <li><a routerLink="/tiendas">Tiendas</a></li>
+          <li><a routerLink="/products">Productos</a></li>
+          <li><a routerLink="/categories" *ngIf="admin">Administrar Categorías</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,12 @@
+JWT_SECRET=m8CYgrpE$C7mNW6JAbemTBWas7dfH4ND$pkzcZgV
+DB_HOST_PROD=sistematejidos.cbrvft6phepf.eu-north-1.rds.amazonaws.com
+DB_PASS_PROD=pass1234
+ENVIOROMENT=DEV
+
+# MercadoPago Access Token
+ACCESS_TOKEN=TEST-1989561437476289-071603-47fdf74bc4647f3c960e083c02a6220e-151739008
+
+# Mail credentials
+MAIL_SERVICE=gmail
+MAIL_USER=correopruebaschillan@gmail.com
+MAIL_PASSWORD=rhglbrnncufyasbk

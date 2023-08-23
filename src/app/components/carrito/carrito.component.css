@@ -1,0 +1,70 @@
+h1 {
+  text-align: center;
+  color: white;
+}
+
+.container {
+  margin-top: 20px;
+  min-height: 43vh;
+}
+
+.table {
+  background-color: #ffffff;
+}
+
+tfoot td {
+  font-weight: bold;
+}
+
+.clickeable:hover{
+  cursor: pointer;
+  opacity: .5;
+}
+
+.circular-image {
+  width: 100px;
+  height: 100px;
+}
+
+.circular-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.centrado{
+  vertical-align: middle;
+  text-align: center;
+}
+
+.izquierda{
+  vertical-align: middle;
+  text-align: left;
+}
+
+.derecha{
+  vertical-align: middle;
+  text-align: right;
+}
+
+
+@media (max-width: 360px) {
+  .hide-360 {
+      display: none;
+  }
+
+  .hide-over-360 {
+    display: normal;
+  }
+}
+
+
+@media (min-width: 360.1px) {
+  .hide-360 {
+    display: normal;
+  }
+
+  .hide-over-360 {
+    display: none;
+  }
+}

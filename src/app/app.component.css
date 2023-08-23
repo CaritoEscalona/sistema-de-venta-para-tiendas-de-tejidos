@@ -1,0 +1,9 @@
+html, body {
+  background-color: #07466E;
+  font-family: Roboto, Arial;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background-repeat: repeat;
+}

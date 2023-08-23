@@ -1,0 +1,141 @@
+<header>
+    <div class="header-top">
+        <div class="header-top-left">
+            <a routerLink="/home">
+                <img src="../assets/logo_light.png" alt="Logo">
+                <span class="header-text"><strong>Sistema de tiendas de tejidos</strong> </span>
+            </a>
+        </div>
+        <div class="header-top-right">
+
+            <ng-container *ngIf="loged; else guestLinks">
+
+                <div class="dropdown" appDropdown>
+                    <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {{ authService.currentUserValue.nombre }}
+                    </a>
+                    <p></p><i class="fa fa-user-circle-o"></i>
+                    <div class="dropdown-menu">
+
+                        <a class="dropdown-item dropdown-item-profile" routerLink="/createProduct"
+                            *ngIf="hasTienda">Añadir Productos
+                        </a>
+                        <a class="dropdown-item dropdown-item-profile" routerLink="/createTienda"
+                            *ngIf="!hasTienda">Registrar Tienda
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item dropdown-item-profile" type="button" (click)="authService.logout()"
+                            routerLink="/login">Cerrar Sesión
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item dropdown-item-profile" routerLink="/change-password">
+                            Cambiar Contraseña
+                        </a>
+                    </div>
+                </div>
+
+                <a class="cart" routerLink="/carrito">
+                    <p>Carrito</p>
+                    <i class="fa fa-shopping-cart"></i>
+                </a>
+            </ng-container>
+
+            <ng-template #guestLinks>
+                <a class="login" routerLink="/login">
+                    <p>Iniciar Sesión</p>
+                    <i class="fa fa-sign-in"></i>
+                </a>
+                <a class="register" routerLink="/createUser">
+                    <p>Registrarse</p>
+                    <i class="fa fa-user-circle-o"></i>
+                </a>
+                <a class="cart" routerLink="/carrito">
+                    <p>Carrito</p>
+                    <i class="fa fa-shopping-cart"></i>
+                </a>
+            </ng-template>
+
+        </div>
+    </div>
+    <div class="header-bottom">
+        <nav>
+            <ul>
+                <ul>
+                    <li><a routerLink="/tiendas">Tiendas</a></li>
+                    <li><a routerLink="/products">Productos</a></li>
+                    <li><button class="link" routerLink="/categories" *ngIf="admin">Administrar Categorías</button></li>
+                </ul>
+            </ul>
+        </nav>
+        <div action="" class="searchBar">
+            <input [(ngModel)]="filtroBusqueda" type="text" id="inputSearch" class="form-control" placeholder="Buscar"
+                autocomplete="off" #searchInput />
+            <div class="searchButton">
+                <button type="button" class="" id="btnSearch">
+                    <i class="fa fa-search" id="searchIcon"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="card">
+    <div class="card-body">
+        <div class="container ">
+
+            <div class="col search-container cardsContainer">
+                <!-- <h3 class="text-center">Resultados con: {{filtroBusqueda}}</h3> -->
+
+                <div class="container-filter">
+                    <h5 class="text-center"><strong>Filtros</strong></h5>
+                    <div class="filters d-flex">
+                        <div class="categoria-filter d-flex">
+                            <label>Categoría</label>
+                            <select [(ngModel)]="filtroCategoria" name="categorias" class="select-filter"
+                                id="categorias-select">
+                                <option value="null"> Seleccione Categoría </option>
+                                <option *ngFor="let item of categorias" [value]="item.id">{{item.nombre}}</option>
+                            </select>
+                        </div>
+
+                        <div class="tienda-filter d-flex">
+                            <label class="">Tiendas</label>
+                            <select [(ngModel)]="filtroTienda" name="tiendas" class="select-filter" id="tiendas-select">
+                                <option value="null"> Seleccione Tienda </option>
+                                <option *ngFor="let item of tiendas" [value]="item.id">{{item.nombre}}</option>
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="row search-item"
+                    *ngFor="let item of products | filterSearch: filtroBusqueda | filterCategory: filtroCategoria |filterTienda: filtroTienda">
+                    <div class="col-sm-9 product-info row">
+                        <div class="col-sm-3">
+                            <img [src]="item.img_url | default:'https://i.pinimg.com/originals/ce/f2/49/cef2490a666301687d8722008451a57a.png'"
+                                alt="img-producto">
+                        </div>
+                        <div class="col-sm-8 item-data">
+                            <h5 class="item-nombre">{{item.nombre}}</h5>
+                            <p class="item-precio"><strong> {{item.precio | currency:'USD':true:"1.0-0"}} CLP</strong>
+                            </p>
+                            <p class="item-categoria">Categoría: <strong> {{item.Categorium.nombre}} </strong></p>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 seller-info d-flex">
+                        <p>Vendido por:</p>
+                        <p> <strong>{{item.Tienda.nombre}}</strong> </p>
+                        <button type="button" class="btn btn-success btn-compra" (click)="verDetalle(item.id)">Ver
+                            detalle
+                            <i class="fa fa-store"></i>
+                        </button>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

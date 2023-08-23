@@ -1,0 +1,28 @@
+<div class="form">
+    <h2>Crear Tienda</h2>
+
+    <form [formGroup]="addTienda" (ngSubmit)="addTienda.value.valid" (ngSubmit)="onTiendaSubmit(addTienda.value)">
+
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" placeholder="Ingrese su nombre"  
+         formControlName="nombre">
+
+        <label for="descripcion">Descripción</label>
+        <input type="text" name="descripcion" placeholder="Ingrese su descripcion" 
+         formControlName="descripcion">
+
+        <label for="correo">Email</label>
+        <input type="email" name="correo" placeholder="Ingrese su email" 
+         formControlName="correo">
+
+        <button class="btn btn-outline-primary file" type="button" (click)="openWidget()" >
+            Agregar imagen
+            <i class="fa fa-picture-o"></i>
+        </button>
+
+
+        <button type="submit" class="btn btn-primary">Crear</button>
+        
+
+    </form>
+</div>

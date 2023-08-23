@@ -1,0 +1,62 @@
+.form {
+    border-radius: 10px;
+    background-color: rgb(243, 243, 243);
+    padding: 20px;
+    width: 40%;
+    margin: 10px auto;
+    font-family: Roboto, Arial;
+}
+
+input,
+textarea    {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+    max-height: 150px;
+}
+
+button {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    font-size: large;
+    font-weight: 500;
+}
+
+h2 {
+    text-align: center;
+    margin: 10px;
+}
+
+.file {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+}
+
+i {
+    font-size: 30px;
+    margin-left: 20px;
+}
+
+@media (max-width: 600px) {
+    .form {
+        border-radius: 10px;
+        background-color: rgb(243, 243, 243);
+        width: 100%;
+        margin: 0px;
+        padding: 0px 10px;
+        font-family: Roboto, Arial;
+    
+    }
+}

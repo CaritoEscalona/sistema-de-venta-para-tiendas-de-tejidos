@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script');
+
+.titulo {
+  color: white;
+  text-align: center;
+  margin: 20px;
+}
+
+.titulo-tienda{
+  font-family: 'Dancing Script', cursive;
+}
+
+.tiendas-container {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  margin: auto;
+}
+
+.tienda {
+  width: calc(
+    33.33% - 20px
+  ); /* Ancho de cada cuadrado (ajustable según tus necesidades) */
+  height: auto; /* Altura de cada cuadrado */
+  padding: 10px;
+  background-color: white;
+  border-radius: 10px;
+  transition: 0.3s ease; /* Animación de transición */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  animation: moveUpDown 2s ease-in-out infinite;
+  margin: auto;
+}
+
+.tienda:hover {
+  background-color: #0a598b; /* Color de fondo al pasar el cursor */
+  transform: scale(1.1);
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+}
+
+.tienda-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.tienda h3 {
+  margin-bottom: 10px;
+  margin: auto;
+}
+
+.tienda img {
+  width: 80px;
+  height: 80px;
+}
+
+@media (max-width: 768px) {
+  .tiendas-container {
+    justify-content: center;
+  }
+
+  .tienda {
+    width: calc(50% - 20px);
+  }
+}
+
+.container{
+  min-height: 52.5vh;
+}
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.circular-image {
+  width: 80px;
+  height: 80px;
+}
+
+.circular-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+@media (max-width: 300px) {
+  .hide-300 {
+    display: none;
+  }
+}

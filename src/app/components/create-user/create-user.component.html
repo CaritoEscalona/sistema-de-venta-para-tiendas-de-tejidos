@@ -1,0 +1,32 @@
+<div class="form">
+    <h2>Registrar usuario</h2>
+
+    <form [formGroup]="addUser" (ngSubmit)="addUser.value.valid" (ngSubmit)="onUserSubmit(addUser.value)">
+
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" placeholder="Ingrese su nombre"  
+         formControlName="nombre">
+
+        <label for="apellido">Apellido</label>
+        <input type="text" name="apellido" placeholder="Ingrese su apellido" 
+         formControlName="apellido">
+        
+        <label for="rut">Rut Usuario</label>
+        <input type="text" name="rut" placeholder="Ingrese su rut sin puntos y con guión" 
+         required maxlength="10" required minlength="9" formControlName="rut">
+
+        <label for="correo">Email</label>
+        <input type="email" name="correo" placeholder="Ingrese su email" 
+         formControlName="correo">
+
+        <label for="pass">Contraseña</label>
+        <input type="password" name="pass" placeholder="Ingrese su contraseña (mínimo 8 caracteres)" 
+         required minlength="8" formControlName="pass">
+
+        <button type="submit" class="btn btn-primary">Registrar</button>
+        
+
+    </form>
+</div>
+
+

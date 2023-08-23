@@ -1,0 +1,300 @@
+/* header css */
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #232f3e;
+  color: #fff;
+}
+
+.header-top img {
+  height: 50px;
+}
+
+.header-top .header-text {
+  margin-left: 20px;
+  font-size: 20px;
+}
+
+.header-top a {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.header-top-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+}
+
+.header-top-right i {
+  margin-top: -0.6vw;
+  display: block;
+  font-size: 1.5vw;
+  margin-bottom: 0.2vw;
+}
+
+.header-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+}
+
+.header-bottom nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.header-bottom nav li {
+  margin-left: 20px;
+}
+
+.header-bottom nav a {
+  color: #232f3e;
+  text-decoration: none;
+  font-size: 16px;
+  transition: text-shadow 0.2s;
+}
+
+.header-bottom nav button {
+  color: #232f3e;
+  text-decoration: none;
+  font-size: 16px;
+  transition: text-shadow 0.2s;
+  border: none;
+  background-color: inherit;
+  display: inline-block;
+}
+
+.header-bottom nav button:hover {
+  text-shadow: 0 5px 7px rgba(0, 0, 0, 0.3);
+}
+
+
+.header-bottom nav a:hover {
+  text-shadow: 0 5px 7px rgba(0, 0, 0, 0.3);
+}
+
+
+.dropdown-menu {
+  background-color: #f0f0f0;
+}
+
+.dropdown-menu a:active{
+  background-color: #c2dafd;
+}
+
+.dropdown-item-profile {
+  background-color: #232f3e;
+  border-radius: 60px;
+  display: inline-block;
+  width: 85%;
+}
+
+
+.searchBar {
+  width: 10%;
+  max-width: 500px;
+  min-width: 300px;
+  background-color: white;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#inputSearch {
+  border: 0;
+  outline: none;
+  background: transparent;
+  flex: 1;
+  padding: 10px 16px;
+}
+
+#inputSearch:focus-visible {
+  box-shadow: none;
+}
+
+
+#btnSearch {
+  background-color: #cfcfcf;
+  padding: 20px;
+  border-radius: 40px;
+  border-style: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 3px;
+}
+
+.searchButton {
+  transition: opacity 0.10s ease-in-out;
+
+}
+
+.searchButton:hover {
+  opacity: 0.8;
+}
+
+.header-top-right a {
+  transition: opacity 0.2s;
+}
+
+.login:hover {
+  opacity: 0.8;
+}
+
+.register:hover {
+  opacity: 0.8;
+}
+
+.cart:hover {
+  opacity: 0.8;
+}
+
+/* css search */
+
+.card {
+  width: auto;
+  margin: 1vw;
+  background-color: #f0f0f0;
+}
+
+.cardsContainer {
+  height: 75vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 90%;
+}
+
+.cardsContainer ::-webkit-scrollbar {
+  width: 7px;
+  margin-left: 10px;
+}
+
+.cardsContainer ::-webkit-scrollbar-track {
+  border-radius: 10px;
+}
+
+.cardsContainer ::-webkit-scrollbar-thumb {
+  
+  border-radius: 10px;
+}
+
+.cardsContainer form {
+  height: 70vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  width: 90%;
+  height: 60vh !important;
+}
+
+.search-item {
+  width: 800px;
+  margin: 25px auto;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 15px;
+  transition: all 0.25s ease-in-out;
+}
+
+.search-item:hover {
+  background-color: #f1f1f1;
+  transform: scale(1.05);}
+
+.search-item img {
+  padding-left: 15px;
+  width: 100%;
+  object-fit: contain;
+  height: 150px;
+}
+
+.item-data {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  padding-left: 30px;
+}
+
+.item-nombre {
+  padding-bottom: 15px;
+}
+
+.container-filter h5 {
+  margin-bottom: 0;
+
+}
+
+.filters {
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.filters label{
+  text-align: center;
+}
+
+.select-filter{
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-weight: bold;
+  background-color: white;
+  transition: all 0.2s ease-in-out;
+}
+
+.select-filter:hover {
+  background-color: #f1f1f1;
+}
+
+.select-filter option {
+  background-color: #f1f1f1;
+  font-weight: normal;
+}
+
+
+.categoria-filter {
+  flex-direction: column;
+
+}
+
+.tienda-filter {
+  flex-direction: column;
+
+}
+
+.buttons-filter {
+  justify-content: space-between;
+}
+
+.btn-compra {
+  background: linear-gradient(to right, #07466E 0%, #07466E 50%, #232f3e 50%, #232f3e 100%);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  background-size: 200% 100%;
+  transition: background-position 0.3s ease;
+}
+
+.btn-compra:hover {
+  background-position: -100% 0;
+}
+
+.seller-info {
+  flex-direction: column;
+}
+

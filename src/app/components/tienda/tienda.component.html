@@ -1,0 +1,169 @@
+<div class="background w-auto" @sideState>
+  <div class="row  m-0 p-5">
+    <div class="col-12 col-md-4 d-flex align-items-center">
+      <div class="row">
+        <div class="d-flex justify-content-center">
+
+          <!-- Logo -->
+          <div class="circular-image ">
+              <img
+                [src]="tienda.img_url | default:'https://i.pinimg.com/originals/ce/f2/49/cef2490a666301687d8722008451a57a.png'"
+                alt="logo"
+                class="img-fluid"
+              />
+          </div>
+        </div>
+
+        <!-- Nombre -->
+        <h1 class="text-center titulo-tienda">{{ tienda.nombre }}</h1>
+      </div>
+    </div>
+    <div class="col-12 col-md-4 text-center">
+
+      <!-- Productos -->
+      <h1 class="header__title">Productos en Stock</h1>
+        <div
+          id="carouselExampleDark"
+          class="carousel carousel-dark slide"
+          data-bs-ride="carousel"
+        >
+        <div class="carousel-indicators">
+            <!-- *ngFor -->
+            <ng-container *ngFor="let product of productos; let i = index">
+              <button 
+                type="button"
+                data-bs-target="#carouselExampleDark"
+                [attr.data-bs-slide-to]="i.toString()"
+                [ngClass]="i == 0 ? 'active' : ''+i"
+                [attr.aria-current]="i == 0 ? 'true' : ''+i"
+                [attr.aria-label]="'Slide ' + (i+1)"
+              ></button>
+            </ng-container>            
+        </div>
+        <div class="carousel-inner">
+
+          <!-- *ngFor -->
+          <ng-container *ngFor="let product of productos; let i = index">
+            <div [class]="i==0 ? 'carousel-item active' : 'carousel-item'" data-bs-interval="4000">
+              <div class="d-flex justify-content-center" style="cursor: pointer;" (click)="navigateProducto(product.id)">
+                  <img
+                    [src]="product.img_url | default:'https://i.pinimg.com/originals/ce/f2/49/cef2490a666301687d8722008451a57a.png'"
+                    class="d-block w-50 imagenCarrusel"
+                    [alt]=product.descripcion
+                  />
+                  <div
+                    class="carousel-caption d-none d-md-block text-white fs-bold"
+                  >
+                  <p class="fw-bold">{{ product.precio | currency:'USD':true:"1.0-0" }}</p>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+          
+        </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide="prev"
+          >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#carouselExampleDark"
+            data-bs-slide="next"
+          >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="col-4 d-flex align-items-center justify-content-center">
+      <section id="calificacion" class="text-center">
+        <!-- AÑADIR CARRITO CON CALIFICACIONES 
+          (COMO EL DE PRODUCTO, PERO CON CALIFICACIONES EN LA BASE DE DATOS)-->
+        <h2>Descripción</h2>
+        <div class="calificacion-container">
+          <div class="col-4">
+            <div>{{ tienda.descripcion }}</div>
+          </div>
+        </div>
+        <button class="header__button" href="#" (click)="showModal()">
+          Contacto
+        </button>
+        <!-- <app-contacto-formulario *ngIf="mostrarFormulario"></app-contacto-formulario> -->
+      </section>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-contacto" tabindex="-1" role="dialog" aria-labelledby="modal-contacto" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <!-- Form -->
+      <form (ngSubmit)="enviarCorreo()" #contactForm="ngForm">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h5 class="modal-title">Formulario de contacto</h5>
+          <button class="btn btn-danger btn-cerrar close" (click)="closeModal()" data-dismiss="modal-stock" aria-label="Close">
+            <i class="fa fa-times" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <!-- Modal Body -->
+        <div class="modal-body">
+
+          <!-- Nombre -->
+          <div class="form-group">
+            <label class="mt-3" for="nombre">
+              <span class="fw-bolder">Nombre</span>
+            </label>
+
+            <!-- Nombre - Input Form -->
+            <input type="text" class="form-control" id="nombre" required [(ngModel)]="nombreContacto" name="nombre" placeholder="Nombre Apellido">
+            <div *ngIf="contactForm.submitted && contactForm.controls['nombre'].invalid" class="text-danger">El nombre es requerido.</div>
+          </div>
+
+          <!-- Correo -->
+          <div class="form-group">
+            <label class="mt-3" for="correo">
+              <span class="fw-bolder">Correo</span>
+            </label>
+
+            <!-- Correo - Input Form -->
+            <input type="email" class="form-control" id="correo" required [(ngModel)]="correoContacto" name="correo" placeholder="email@example.com" [ngModelOptions]="{ updateOn: 'blur' }" #emailInput="ngModel"  ngModel email="true">
+            <div *ngIf="contactForm.submitted && emailInput.invalid" class="text-danger">
+              <div *ngIf="emailInput.errors?.['required']">El correo es requerido.</div>
+              <div *ngIf="emailInput.errors?.['email']">El correo debe ser válido.</div>
+            </div>
+          </div>
+
+          <!-- Mensaje -->
+          <div class="form-group">
+            <label class="mt-3" for="mensaje">
+              <span class="fw-bolder">Mensaje</span>
+            </label>
+
+            <!-- Mensaje - Text Area Form -->
+            <textarea class="form-control" id="mensaje" required [(ngModel)]="mensajeContacto" name="mensaje" style="height: 100px" placeholder="Ingresa tu mensaje aquí"></textarea>
+            <div *ngIf="contactForm.submitted && contactForm.controls['mensaje'].invalid" class="text-danger">El mensaje es requerido.</div>
+          </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer justify-content-center">
+
+          <!-- Enviar correo al registrado de la tienda -->
+          <button type="submit" class="btn btn-enviar">Enviar</button>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>

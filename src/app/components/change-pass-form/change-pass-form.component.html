@@ -1,0 +1,25 @@
+<div class="container">
+  <img src="assets/logo_light.png" alt="Logo" class="logo" />
+  <h2>Cambiar contraseña</h2>
+
+  <!-- Formulario para cambiar contraseña una vez se esta logeado -->
+
+  <form class="form" [formGroup]="changePassForm" (ngSubmit)="onSubmit()">
+
+    <div *ngIf="!this.forgottenPassword">
+      <label for="oldPassword">Contraseña antigua</label>
+      <input type="password" name="oldPassword" placeholder="Ingrese su antigua contraseña" formControlName="oldPassword"
+        required>
+    </div>
+    
+    <label for="newPassword">Contraseña nueva</label>
+    <input type="password" name="newPassword" placeholder="Ingrese su nueva contraseña" formControlName="newPassword"
+      required>
+
+    <label for="confirmNewPassword">Confirmar contraseña nueva</label>
+    <input type="password" name="confirmNewPassword" placeholder="Ingrese otra vez su nueva contraseña"
+      formControlName="confirmNewPassword" required>
+
+    <button type="submit" class="btn btn-primary">Cambiar Contraseña</button>
+  </form>
+</div>

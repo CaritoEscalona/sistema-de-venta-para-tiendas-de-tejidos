@@ -1,0 +1,93 @@
+<div class="container" *ngIf="cargando">
+    <h1>Enviando boleta</h1>
+    <h3 class="text-center text-white">Por favor no abandone la página</h3>
+    <i class="fa fa-spinner fa-spin d-flex justify-content-center extra-big" aria-hidden="true"></i>
+</div>
+
+<div class="container" [ngStyle]="{'display':  cargando ? 'none' : 'block'}">
+    <div id="boleta" class="container" #boleta>
+        <h1>Resultado del Pago</h1>
+
+        <div class="status-message">
+            <h2>Estado del Pago:</h2>
+            <p>{{ status }}</p>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="izquierda" scope="col">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Producto</th>
+                    <th class="izquierda" scope="col">Descripcion</th>
+                    <th class="centrado" scope="col">Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let producto of detalle_productos; let i = index">
+                    <td class="izquierda">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{producto.nombre}}</td>
+                    <td class="izquierda">{{producto.descripcion}}</td>
+                    <td class="centrado">{{producto.precio | currency:'USD':true:"1.0-0"}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="derecha" colspan="2"><strong>Total:</strong></td>
+                    <td class="centrado"><strong>{{calcularTotal() | currency:'USD':true:"1.0-0"}}</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="izquierda" scope="col">Parametros MercadoPago</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Collection ID:</td>
+                    <td>{{ collectionId }}</td>
+                </tr>
+                <tr>
+                    <td>Collection Status:</td>
+                    <td>{{ collectionStatus }}</td>
+                </tr>
+                <tr>
+                    <td>Payment ID:</td>
+                    <td>{{ payment_id }}</td>
+                </tr>
+                <tr>
+                    <td>Status:</td>
+                    <td>{{ status }}</td>
+                </tr>
+                <tr>
+                    <td>External Reference:</td>
+                    <td>{{ external_reference }}</td>
+                </tr>
+                <tr>
+                    <td>Payment Type:</td>
+                    <td>{{ payment_type }}</td>
+                </tr>
+                <tr>
+                    <td>Merchant Order ID:</td>
+                    <td>{{ merchant_order_id }}</td>
+                </tr>
+                <tr>
+                    <td>Preference ID:</td>
+                    <td>{{ preference_id }}</td>
+                </tr>
+                <tr>
+                    <td>Site ID:</td>
+                    <td>{{ site_id }}</td>
+                </tr>
+                <tr>
+                    <td>Processing Mode:</td>
+                    <td>{{ processing_mode }}</td>
+                </tr>
+                <tr>
+                    <td>Merchant Account ID:</td>
+                    <td>{{ merchant_account_id }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <button class="btn btn-primary" (click)="goToHome()">Regresar al Home</button>
+</div>

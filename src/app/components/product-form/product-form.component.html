@@ -1,0 +1,33 @@
+<div class="form">
+  <h2>Registrar producto</h2>
+
+  <form [formGroup]="productForm" (ngSubmit)="submitForm()" novalidate>
+    <label for="sku">SKU</label>
+    <input type="text" name="sku" formControlName="sku" required>
+    <div *ngIf="productForm.get('sku')?.errors && productForm.get('sku')?.errors?.['existe']">
+      <p class="fst-italic pSmall text-danger m-0">*El sku ya existe</p>
+    </div>
+
+    <label for="nombre">Nombre</label>
+    <input type="text" name="nombre" formControlName="nombre" required>
+
+    <label for="descripcion">Descripción</label>
+    <textarea name="descripcion" formControlName="descripcion" required></textarea>
+
+    <label for="precio">Precio</label>
+    <input type="number" min="0" max="99999999" name="precio" formControlName="precio" required>
+
+    <label for="id_categoria">Categoría</label>
+    <select class="form-control mb-3" name="categoria" formControlName="id_categoria" required>
+      <option selected disabled hidden value="0"> Seleccionar categoria</option>
+      <option *ngFor="let categoria of categorias" [value]="categoria.id">{{categoria.nombre}}</option>
+    </select>
+    
+    <button class="btn btn-outline-primary file" type="button" (click)="openWidget()" >
+      Agregar imagen
+      <i class="fa fa-picture-o"></i>
+    </button>
+
+    <button class="btn btn-primary" [disabled]="productForm.invalid" type="submit">Guardar</button>
+  </form>
+</div>

@@ -1,0 +1,33 @@
+.producto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    filter: brightness(0.8);
+    width: 28vw;
+    height: 50vh;
+    border-radius: 10px;
+    background-position: center;
+    background-size: cover;
+}
+
+.producto:hover .producto-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    cursor: pointer;
+}
+
+.producto-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: transparent;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: transparent;
+    color: transparent;
+    border-radius: 10px;
+}

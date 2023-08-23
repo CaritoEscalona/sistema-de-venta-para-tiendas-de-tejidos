@@ -1,0 +1,94 @@
+<div *ngIf="admin">
+  <h2 class="titulo">Todas las categorías</h2> <!-- Título "Tiendas" -->
+  <div class="container">
+    <div class="categorias-container">
+      <div class="categoria" *ngFor="let item of categorias">
+        <div class="categoria-inner">
+          <h3 class="titulo-categoria">
+            {{item.nombre}}
+          </h3>
+          <button (click)="openModal(item)" class="close-button">&#x274C;</button>
+          <div class="d-flex justify-content-center">
+            <div class="circular-image">
+              <img [src]="item.img_url" alt="logo" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="add-categoria bg-success">
+        <div class="circle-card-inner">
+          <button routerLink="/createCategory" class="add-button">&#x2795;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODAL CONFIRMAR ELIMINAR CATEGORIA -->
+<div class="modal fade" id="modal-confirmation" tabindex="-1" role="dialog" aria-labelledby="modal-confirmation"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content d-flex justify-content-center">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title text-center" style="font-weight: bold; color: #333;">Confirmación</h5>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+
+        <!-- Modal Content -->
+        <div class="form-group">
+          <p class="mt-3 text-center" style="font-size: 1.2em; color: #555;">
+            ¿Estás seguro de que quieres eliminar esta categoría?
+          </p>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer justify-content-center">
+
+        <!-- ELiminar -->
+        <button class="btn btn-danger" (click)="deleteCategoria()">Eliminar</button>
+        <button class="btn btn-primary" (click)="hideModal()" data-dismiss="modal-stock" aria-label="Close">
+          Volver
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CATEGORIA EN USO -->
+<div class="modal fade" id="modal-in-use" tabindex="-1" role="dialog" aria-labelledby="modal-in-use" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content d-flex justify-content-center">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h5 class="modal-title text-center" style="font-weight: bold; color: #333;">Categoría en Uso</h5>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="modal-body">
+
+        <!-- Modal Content -->
+        <div class="form-group">
+          <p class="mt-3 text-center" style="font-size: 1.2em; color: #555;">
+            Esta categoría no puede ser eliminada porque actualmente está en uso.
+          </p>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="modal-footer justify-content-center">
+        <!-- Volver -->
+        <button class="btn btn-primary" (click)="hideModal()" data-dismiss="modal-stock" aria-label="Close">
+          Volver
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+    <img src="assets/logo_light.png" alt="Logo" class="logo" />
+    <h2>Inicia Sesión en Sistema para tiendas de tejidos</h2>
+    <form class="form" [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+      <a routerLink="/forgetPassword">¿Olvidaste tu contraseña?</a>
+      <input
+        type="email"
+        formControlName="correo"
+        placeholder="Correo electrónico"
+      />
+      <input
+        type="password"
+        formControlName="pass"
+        placeholder="Contraseña"
+      />
+      <button type="submit">Iniciar sesión</button>
+    </form>
+    <div class="create-account">
+      <p>¿Nuevo en el sistema? <a routerLink="/createUser"><strong>Crea una cuenta</strong></a></p>
+    </div>
+  </div>
+  

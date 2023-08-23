@@ -1,0 +1,23 @@
+<h2 class="titulo">Tiendas</h2> <!-- Título "Tiendas" -->
+<div class="container">
+  <div class="tiendas-container">
+    <div class="tienda" *ngFor="let tienda of tiendas" @sideState>
+      <div class="tienda-inner" (click)="verDetalleTienda(tienda.id)">
+        <h3 class="titulo-tienda">
+           {{ tienda.nombre }}
+          </h3>
+          <div class="d-flex justify-content-center">
+            <div class="circular-image">
+                <img
+                  [src]="tienda.img_url | default:'https://i.pinimg.com/originals/ce/f2/49/cef2490a666301687d8722008451a57a.png'"
+                  alt="logo"
+                  class=""
+                />
+            </div>
+          </div>
+        <p class="hide-300">{{ tienda.descripcion }}</p>
+        <!-- Otros detalles de la tienda -->
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<header *ngIf="showHeader">
+  <div class="header-top">
+    <div class="header-top-left">
+      <a routerLink="/home">
+        <img src="../assets/logo_light.png" alt="Logo">
+        <span class="header-text"><strong>Sistema de tiendas de tejidos</strong> </span>
+      </a>
+    </div>
+    <div class="header-top-right">
+
+      <ng-container *ngIf="loged; else guestLinks">
+
+        <div class="dropdown" appDropdown>
+          <a class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ authService.currentUserValue.nombre }}
+          </a>
+          <p></p><i class="fa fa-user-circle-o"></i>
+          <div class="dropdown-menu">
+
+            <a class="dropdown-item dropdown-item-profile" routerLink="/createProduct"
+              *ngIf="hasTienda">Añadir Productos
+            </a>
+            <a class="dropdown-item dropdown-item-profile" routerLink="/createTienda"
+              *ngIf="!hasTienda">Registrar Tienda
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item dropdown-item-profile" type="button" (click)="authService.logout()"
+              routerLink="/login">Cerrar Sesión
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item dropdown-item-profile" routerLink="/change-password">
+              Cambiar Contraseña
+            </a>
+          </div>
+        </div>
+
+        <a class="cart" routerLink="/carrito">
+          <p>Carrito</p>
+          <i class="fa fa-shopping-cart"></i>
+        </a>
+      </ng-container>
+
+      <ng-template #guestLinks>
+        <a class="login" routerLink="/login">
+          <p>Iniciar Sesión</p>
+          <i class="fa fa-sign-in"></i>
+        </a>
+        <a class="register" routerLink="/createUser">
+          <p>Registrarse</p>
+          <i class="fa fa-user-circle-o"></i>
+        </a>
+        <a class="cart" routerLink="/carrito">
+          <p>Carrito</p>
+          <i class="fa fa-shopping-cart"></i>
+        </a>
+      </ng-template>
+
+    </div>
+  </div>
+  <div class="header-bottom">
+    <nav>
+      <ul>
+        <ul>
+          <li><a routerLink="/tiendas">Tiendas</a></li>
+          <li><a routerLink="/products">Productos</a></li>
+          <li><button class="link" routerLink="/categories" *ngIf="admin">Administrar Categorías</button></li>
+      </ul>
+      </ul>
+    </nav>
+    <form action="" class="searchBar">
+      <input (click)="navSearch()" type="text" id="inputSearch" class="form-control" placeholder="Buscar" autocomplete="off" #searchInput />
+      <div class="searchButton">
+        <button (click)="navSearch()" type="button" class="" id="btnSearch">
+          <i class="fa fa-search" id="searchIcon"></i>
+        </button>
+      </div>
+    </form>
+  </div>
+</header>

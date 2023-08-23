@@ -1,0 +1,19 @@
+<div class="form">
+    <h2>Crear Categoría</h2>
+
+    <form [formGroup]="addCategoria" (ngSubmit)="addCategoria.value.valid" (ngSubmit)="onCategoriaSubmit(addCategoria.value)">
+
+        <label for="nombre">Nombre</label>
+        <input type="text" name="nombre" placeholder="Ingrese su nombre"  
+         formControlName="nombre">
+
+        <button class="btn btn-outline-primary file" type="button" (click)="openWidget()" >
+            Agregar imagen
+            <i class="fa fa-picture-o"></i>
+        </button>
+
+        <button type="submit" class="btn btn-primary">Crear</button>
+        
+
+    </form>
+</div>

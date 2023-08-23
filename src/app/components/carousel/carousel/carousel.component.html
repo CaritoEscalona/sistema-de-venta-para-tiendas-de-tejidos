@@ -1,0 +1,10 @@
+<ngb-carousel *ngIf="productos">
+	<ng-template ngbSlide *ngFor="let producto of productos">
+		<div class="producto" [ngStyle]="{'background-image': 'url(' + producto.img_url + ')'}">
+			<div class="producto-overlay" (click)="goToProductDetail(producto.id)">
+				<h3>{{producto.nombre}}</h3>
+				<p>{{producto.precio | currency:'USD':true:"1.0-0"}} CLP</p>
+			</div>
+		</div>
+	</ng-template>
+</ngb-carousel>
